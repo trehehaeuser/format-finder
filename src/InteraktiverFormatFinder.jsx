@@ -66,7 +66,7 @@ const formatLinks = {
 const formatDescriptions = {
   "Sokratische Schreibwerkstatt": "Dein innerer Kompass in Worten – Klarheit im Schreiben, ohne äußeren Druck.",
   "Sokratisches Mentoring": "Individuelles Denk- und Gesprächsformat für echte Klarheit in komplexen Fragen.",
-  "Retreat (Ich bin / Qigong)": "Ein Raum zum Rückzug, Spüren und Wandeln – mit Bewegung, Dialog und Natur.",
+  "Ich bin | Tagesretreat": "Ein Raum zum Rückzug, Spüren und Wandeln – mit Bewegung, Dialog und Natur.",
   "Sokratisches Gespräch Online": "Gemeinsames Denken auf Augenhöhe – online, strukturiert und tiefgehend.",
   "Sokratischer Konvent": "In Resonanz mit anderen – Raum für Präsenz, Austausch und das Wesentliche.",
   "Sokratischer Männerkreis Online": "Für Männer, die sich zeigen wollen – ehrlich, verletzlich, kraftvoll.",
