@@ -35,39 +35,36 @@ const data = {
     "Ich will mit anderen denken. Hören, was sie bewegt – und was in mir anklingt.",
     "Ich will schriftlich in Kontakt kommen – nicht allein, aber ohne reden zu müssen.",
     "Ich bin noch unsicher – ich will entdecken."
-  ],
-step6Options: [
+  ]
+}
+
+const step6Options = [
   "Ich bin Mann und suche Austausch unter Männern",
   "Ich bin LehrerIn oder LernbegleiterIn",
   "Ich habe Führungsverantwortung",
   "Ich bin Moderator, Trainer, Coach, Mentor oder Berater",
   "Keines davon"
-  ]
-}
+]
 
 const formatLinks = {
   "Sokratische Schreibwerkstatt": "https://www.institut-neue-sokratische-dialoge.de/sokratische-schreibwerkstatt",
   "Sokratisches Mentoring": "https://www.institut-neue-sokratische-dialoge.de/sokratisches-mentoring",
-  "Retreat Ich bin": "https://www.institut-neue-sokratische-dialoge.de/ichbin",
+  "Retreat (Ich bin / Qigong)": "https://www.institut-neue-sokratische-dialoge.de/retreat",
+  "Dialog- und Qigong-Retreat": "https://www.institut-neue-sokratische-dialoge.de/qigong-retreat",
   "Sokratisches Gespräch Online": "https://www.institut-neue-sokratische-dialoge.de/sokratisches-gespraech-online",
-  "Sokratischer Konvent": "https://www.institut-neue-sokratische-dialoge.de/neuer-sokratischer-konvent",
-  "Entdeckungspfad: mehrere Formate zur Auswahl": "https://www.institut-neue-sokratische-dialoge.de/formate",
-
-  // NEU:
-  "Sokratischer Männerkreis Online": "https://www.institut-neue-sokratische-dialoge.de/sokratischer-maennerkreis-online",
-  "Sokratischer Lehrerkreis Online": "https://www.institut-neue-sokratische-dialoge.de/sokratischer-lehrerkreis-online",
-  "Sokratischer Führungskreis Online": "https://www.institut-neue-sokratische-dialoge.de/sokratischerfuehrungskreis-online",
-  "Dialog- und Qigong-Retreat": "https://www.institut-neue-sokratische-dialoge.de/dialog-und-qigong-retreat",
+  "Sokratischer Konvent": "https://www.institut-neue-sokratische-dialoge.de/konvent",
+  "Sokratischer Männerkreis Online": "https://www.institut-neue-sokratische-dialoge.de/maennerkreis",
+  "Sokratischer Lehrerkreis Online": "https://www.institut-neue-sokratische-dialoge.de/lehrerkreis",
+  "Sokratischer Führungskreis Online": "https://www.institut-neue-sokratische-dialoge.de/sofo",
   "Neuer Sokratischer Dialog im Norden": "https://www.institut-neue-sokratische-dialoge.de/dialog-norden",
-  "Neuer Sokratischer Dialog vor Ort": "https://www.institut-neue-sokratische-dialoge.de/Kontakt",
-  "Neuer Sokratischer Dialog als Teil deiner Veranstaltung": "https://www.institut-neue-sokratische-dialoge.de/Kontakt"
+  "Neuer Sokratischer Dialog vor Ort": "https://www.institut-neue-sokratische-dialoge.de/dialog-vor-ort",
+  "Neuer Sokratischer Dialog als Teil deiner Veranstaltung": "https://www.institut-neue-sokratische-dialoge.de/dialog-fuer-dein-event",
+  "Entdeckungspfad: mehrere Formate zur Auswahl": "https://www.institut-neue-sokratische-dialoge.de/formate"
 }
-
 
 function getFormats(step3, step2_1, step2_2, step2_3, step6, step1) {
   const formats = []
 
-  // Basis-Zuordnungen
   if (step3.includes("schreibend")) formats.push("Sokratische Schreibwerkstatt")
   if (step3.includes("Gespräch")) formats.push("Sokratisches Mentoring")
   if (step3.includes("Rückzug")) formats.push("Retreat (Ich bin / Qigong)")
@@ -88,8 +85,8 @@ function getFormats(step3, step2_1, step2_2, step2_3, step6, step1) {
   }
 
   if (step2_1 === "Rückzug" &&
-     (step2_2 === "Im Übergang – ich will Altes würdigen und Neues finden" ||
-      step2_2 === "In der Tiefe – ich will weitergraben")) {
+      (step2_2 === "Im Übergang – ich will Altes würdigen und Neues finden" ||
+       step2_2 === "In der Tiefe – ich will weitergraben")) {
     formats.push("Dialog- und Qigong-Retreat")
   }
 
@@ -109,7 +106,14 @@ function getFormats(step3, step2_1, step2_2, step2_3, step6, step1) {
     formats.push("Neuer Sokratischer Dialog als Teil deiner Veranstaltung")
   }
 
-  // Priorisierungen durch Schritt 1
+  if (step6.includes("Coach") && step3.includes("mit mir denkt")) {
+    formats.push("Sokratisches Mentoring")
+  }
+
+  if (step6.includes("Coach") && step2_3 === "Ich will mich zeigen – ohne Maske") {
+    formats.push("Sokratischer Konvent")
+  }
+
   const step1Boost = {
     "Ich stecke fest": "Sokratisches Mentoring",
     "Ich spüre, dass etwas in Bewegung": "Retreat (Ich bin / Qigong)",
@@ -123,7 +127,6 @@ function getFormats(step3, step2_1, step2_2, step2_3, step6, step1) {
     .filter(([key]) => step1.includes(key))
     .map(([, value]) => value)
 
-  // Wenn mehrere Formate: sortieren nach Boost
   const formatPriority = [
     ...boost,
     "Sokratisches Mentoring",
@@ -135,6 +138,7 @@ function getFormats(step3, step2_1, step2_2, step2_3, step6, step1) {
     "Dialog- und Qigong-Retreat",
     "Neuer Sokratischer Dialog im Norden",
     "Neuer Sokratischer Dialog vor Ort",
+    "Neuer Sokratischer Dialog als Teil deiner Veranstaltung",
     "Sokratischer Konvent",
     "Entdeckungspfad: mehrere Formate zur Auswahl"
   ]
@@ -204,9 +208,23 @@ export default function InteraktiverFormatFinder() {
 
       {step === 6 && (
         <div className="ff-card">
+          <h2 className="ff-heading">Damit ich dir die passenden Formate vorschlagen kann, noch eine kleine Abschlussfrage …</h2>
+          {renderButtons(step6Options, 'step6')}
+        </div>
+      )}
+
+      {step === 7 && (
+        <div className="ff-card">
           <h2 className="ff-heading">Dein Weg könnte hier weitergehen:</h2>
-          <div className="ff-results">
-            {getFormats(answers.step3).map((f, i) => (
+          <div className="ff-content">
+            {getFormats(
+              answers.step3,
+              answers.step2_1,
+              answers.step2_2,
+              answers.step2_3,
+              answers.step6,
+              answers.step1
+            ).map((f, i) => (
               <p key={i} className="ff-link">👉 <a href={formatLinks[f]} target="_blank" rel="noopener noreferrer">{f}</a></p>
             ))}
           </div>
