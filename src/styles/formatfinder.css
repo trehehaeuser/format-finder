@@ -1,29 +1,50 @@
 .ff-wrapper {
-  max-width: 48rem;
-  margin-left: auto;
-  margin-right: auto;
-  padding: 1.5rem;
-  color: #394657;
+  padding: 2rem;
   font-family: sans-serif;
+  max-width: 800px;
+  margin: auto;
 }
 
-.ff-button {
-  background-color: #6da93c;
-  color: white;
-  padding: 0.5rem 1rem;
-  border-radius: 0.75rem;
-  font-weight: 500;
-  margin-top: 1rem;
-  cursor: pointer;
-}
-
-.ff-button:hover {
-  background-color: #5c9432;
+.ff-card {
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  padding: 1.5rem;
+  margin-bottom: 1rem;
+  background: #fff;
 }
 
 .ff-heading {
-  font-size: 1.25rem;
-  font-weight: 600;
-  color: #2e7cd8;
+  font-size: 1.5rem;
   margin-bottom: 1rem;
+}
+
+.ff-button {
+  display: block;
+  width: 100%;
+  padding: 1rem 1.5rem;
+  font-size: 1.2rem;
+  background-color: #2e7cd8; /* CI-Blau */
+  color: #ffffff;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin: 0.5rem 0;
+}
+
+.ff-button:hover {
+  background-color: #1e5ba6; /* dunkler beim Hover */
+}
+
+.ff-content {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 1rem; /* Abstand zwischen Buttons */
+}
+
+.ff-link a {
+  color: #2e7cd8;
+  text-decoration: none;
+  font-weight: bold;
 }
