@@ -1,5 +1,7 @@
 import { useState, useEffect } from 'react'
 import './styles/formatfinder.css'
+import './styles/fonts.css'
+
 
 const data = {
   step1: [
