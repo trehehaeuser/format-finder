@@ -1,6 +1,4 @@
 import { useState } from 'react'
-import { Card, CardContent } from '@/components/ui/card'
-import '@/styles/fonts.css'
 import '@/styles/formatfinder.css'
 
 const data = {
