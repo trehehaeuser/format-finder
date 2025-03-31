@@ -41,11 +41,21 @@ const data = {
 const formatLinks = {
   "Sokratische Schreibwerkstatt": "https://www.institut-neue-sokratische-dialoge.de/sokratische-schreibwerkstatt",
   "Sokratisches Mentoring": "https://www.institut-neue-sokratische-dialoge.de/sokratisches-mentoring",
-  "Retreat (Ich bin / Qigong)": "https://www.institut-neue-sokratische-dialoge.de/retreat",
+  "Retreat Ich bin": "https://www.institut-neue-sokratische-dialoge.de/ichbin",
   "Sokratisches Gespräch Online": "https://www.institut-neue-sokratische-dialoge.de/sokratisches-gespraech-online",
   "Sokratischer Konvent": "https://www.institut-neue-sokratische-dialoge.de/konvent",
-  "Entdeckungspfad: mehrere Formate zur Auswahl": "https://www.institut-neue-sokratische-dialoge.de/formate"
+  "Entdeckungspfad: mehrere Formate zur Auswahl": "https://www.institut-neue-sokratische-dialoge.de/formate",
+
+  // NEU:
+  "Sokratischer Männerkreis Online": "https://www.institut-neue-sokratische-dialoge.de/sokratischer-maennerkreis-online",
+  "Sokratischer Lehrerkreis Online": "https://www.institut-neue-sokratische-dialoge.de/sokratischer-lehrerkreis-online",
+  "Sokratischer Führungskreis Online": "https://www.institut-neue-sokratische-dialoge.de/sokratischerfuehrungskreis-online",
+  "Dialog- und Qigong-Retreat": "https://www.institut-neue-sokratische-dialoge.de/dialog-und-qigong-retreat",
+  "Neuer Sokratischer Dialog im Norden": "https://www.institut-neue-sokratische-dialoge.de/dialog-norden",
+  "Neuer Sokratischer Dialog vor Ort": "https://www.institut-neue-sokratische-dialoge.de/Kontakt",
+  "Neuer Sokratischer Dialog als Teil deiner Veranstaltung": "https://www.institut-neue-sokratische-dialoge.de/Kontakt"
 }
+
 
 
 function getFormats(step3, step2_1, step2_2, step2_3) {
