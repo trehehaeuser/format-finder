@@ -1,6 +1,8 @@
 import { useState } from 'react'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent } from '@/components/ui/card'
+import '@/styles/fonts.css'
+import '@/styles/formatfinder.css'
 
 const data = {
   step1: [
@@ -69,68 +71,68 @@ export default function InteraktiverFormatFinder() {
   }
 
   return (
-    <div className="max-w-3xl mx-auto p-6 space-y-6">
+    <div className="ff-wrapper">
       {step === 1 && (
-        <Card>
-          <CardContent className="space-y-4 p-6">
-            <h2 className="text-xl font-semibold">Was beschäftigt dich gerade?</h2>
+        <Card className="ff-card">
+          <CardContent className="ff-content">
+            <h2 className="ff-heading">Was beschäftigt dich gerade?</h2>
             {data.step1.map((item, i) => (
-              <Button key={i} onClick={() => handleSelect('step1', item)}>{item}</Button>
+              <Button key={i} onClick={() => handleSelect('step1', item)} className="ff-button">{item}</Button>
             ))}
           </CardContent>
         </Card>
       )}
 
       {step === 2 && (
-        <Card>
-          <CardContent className="space-y-4 p-6">
-            <h2 className="text-xl font-semibold">Was brauchst du gerade am meisten?</h2>
+        <Card className="ff-card">
+          <CardContent className="ff-content">
+            <h2 className="ff-heading">Was brauchst du gerade am meisten?</h2>
             {data.step2_1.map((item, i) => (
-              <Button key={i} onClick={() => handleSelect('step2_1', item)}>{item}</Button>
+              <Button key={i} onClick={() => handleSelect('step2_1', item)} className="ff-button">{item}</Button>
             ))}
           </CardContent>
         </Card>
       )}
 
       {step === 3 && (
-        <Card>
-          <CardContent className="space-y-4 p-6">
-            <h2 className="text-xl font-semibold">Wo bist du auf deinem Weg?</h2>
+        <Card className="ff-card">
+          <CardContent className="ff-content">
+            <h2 className="ff-heading">Wo bist du auf deinem Weg?</h2>
             {data.step2_2.map((item, i) => (
-              <Button key={i} onClick={() => handleSelect('step2_2', item)}>{item}</Button>
+              <Button key={i} onClick={() => handleSelect('step2_2', item)} className="ff-button">{item}</Button>
             ))}
           </CardContent>
         </Card>
       )}
 
       {step === 4 && (
-        <Card>
-          <CardContent className="space-y-4 p-6">
-            <h2 className="text-xl font-semibold">Wie offen bist du für Begegnung mit anderen?</h2>
+        <Card className="ff-card">
+          <CardContent className="ff-content">
+            <h2 className="ff-heading">Wie offen bist du für Begegnung mit anderen?</h2>
             {data.step2_3.map((item, i) => (
-              <Button key={i} onClick={() => handleSelect('step2_3', item)}>{item}</Button>
+              <Button key={i} onClick={() => handleSelect('step2_3', item)} className="ff-button">{item}</Button>
             ))}
           </CardContent>
         </Card>
       )}
 
       {step === 5 && (
-        <Card>
-          <CardContent className="space-y-4 p-6">
-            <h2 className="text-xl font-semibold">Wie willst du weitergehen?</h2>
+        <Card className="ff-card">
+          <CardContent className="ff-content">
+            <h2 className="ff-heading">Wie willst du weitergehen?</h2>
             {data.step3.map((item, i) => (
-              <Button key={i} onClick={() => handleSelect('step3', item)}>{item}</Button>
+              <Button key={i} onClick={() => handleSelect('step3', item)} className="ff-button">{item}</Button>
             ))}
           </CardContent>
         </Card>
       )}
 
       {step === 6 && (
-        <Card>
-          <CardContent className="space-y-4 p-6">
-            <h2 className="text-xl font-semibold">Dein Weg könnte hier weitergehen:</h2>
+        <Card className="ff-card">
+          <CardContent className="ff-content">
+            <h2 className="ff-heading">Dein Weg könnte hier weitergehen:</h2>
             {getFormats(answers.step3).map((f, i) => (
-              <p key={i} className="text-lg">👉 <a href={formatLinks[f]} target="_blank" rel="noopener noreferrer" className="underline text-blue-600">{f}</a></p>
+              <p key={i} className="ff-link">👉 <a href={formatLinks[f]} target="_blank" rel="noopener noreferrer">{f}</a></p>
             ))}
           </CardContent>
         </Card>
