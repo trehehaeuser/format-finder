@@ -35,18 +35,15 @@ const data = {
     "Ich will mit anderen denken. Hören, was sie bewegt – und was in mir anklingt.",
     "Ich will schriftlich in Kontakt kommen – nicht allein, aber ohne reden zu müssen.",
     "Ich bin noch unsicher – ich will entdecken."
-  ]
-  
-}
-
-// Schritt 6 – Zielgruppenfrage (erweitert)
-const step6Options = [
+  ],
+step6Options: [
   "Ich bin Mann und suche Austausch unter Männern",
   "Ich bin LehrerIn oder LernbegleiterIn",
   "Ich habe Führungsverantwortung",
   "Ich bin Moderator, Trainer, Coach, Mentor oder Berater",
   "Keines davon"
-];
+  ]
+}
 
 const formatLinks = {
   "Sokratische Schreibwerkstatt": "https://www.institut-neue-sokratische-dialoge.de/sokratische-schreibwerkstatt",
