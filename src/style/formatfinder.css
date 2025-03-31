@@ -1,20 +1,29 @@
+/* Wrapper: Allgemeines Layout */
 .ff-wrapper {
   @apply max-w-3xl mx-auto p-6 space-y-6 text-[#394657] font-sans;
 }
 
+/* Kartenumrandung in CI-Grün */
 .ff-card {
-  @apply border-[#6da93c];
+  @apply border border-[#6da93c] rounded-2xl shadow-sm;
 }
 
+/* Inhaltspadding in Karten */
+.ff-content {
+  @apply space-y-4 p-6;
+}
+
+/* Überschriften in CI-Blau */
 .ff-heading {
   @apply text-xl font-semibold text-[#2e7cd8];
 }
 
+/* Buttons im CI-Grün, Hover-Effekt */
 .ff-button {
-  @apply bg-[#6da93c] hover:bg-[#5c9432] text-white font-medium;
+  @apply bg-[#6da93c] hover:bg-[#5c9432] text-white font-medium py-2 px-4 rounded-xl;
 }
 
-.ff-link {
-  @apply underline text-[#2e7cd8] hover:text-[#394657] text-lg font-medium;
+/* Links im Ergebnisbereich in CI-Blau, Hover auf Marine */
+.ff-link a {
+  @apply underline text-[#2e7cd8] hover:text-[#394657];
 }
-
