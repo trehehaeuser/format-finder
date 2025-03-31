@@ -61,6 +61,23 @@ const formatLinks = {
   "Neuer Sokratischer Dialog als Teil deiner Veranstaltung": "https://www.institut-neue-sokratische-dialoge.de/dialog-in-veranstaltung"
 }
 
+const formatDescriptions = {
+  "Sokratische Schreibwerkstatt": "Dein innerer Kompass in Worten – Klarheit im Schreiben, ohne äußeren Druck.",
+  "Sokratisches Mentoring": "Individuelles Denk- und Gesprächsformat für echte Klarheit in komplexen Fragen.",
+  "Retreat (Ich bin / Qigong)": "Ein Raum zum Rückzug, Spüren und Wandeln – mit Bewegung, Dialog und Natur.",
+  "Sokratisches Gespräch Online": "Gemeinsames Denken auf Augenhöhe – online, strukturiert und tiefgehend.",
+  "Sokratischer Konvent": "In Resonanz mit anderen – Raum für Präsenz, Austausch und das Wesentliche.",
+  "Sokratischer Männerkreis Online": "Für Männer, die sich zeigen wollen – ehrlich, verletzlich, kraftvoll.",
+  "Sokratischer Lehrerkreis Online": "Für LernbegleiterInnen, die sich Raum nehmen zum Denken, Hören, Verstehen.",
+  "Sokratischer Führungskreis Online": "Reflexionsraum für Menschen mit Verantwortung – jenseits von Businessroutinen.",
+  "Neuer Sokratischer Dialog im Norden": "Still. Echt. Tief. Ein Dialogformat an einem Ort, der Weite schenkt.",
+  "Neuer Sokratischer Dialog vor Ort": "Bringe Denkraum in deine Region – mit Tiefe, Struktur und Präsenz.",
+  "Neuer Sokratischer Dialog als Teil deiner Veranstaltung": "Verwandle Events in echte Resonanzräume mit Substanz.",
+  "Dialog- und Qigong-Retreat": "Die Kraft aus Bewegung und Dialog – Retreat für Körper, Geist und Wandel.",
+  "Entdeckungspfad: mehrere Formate zur Auswahl": "Du bist eingeladen, weiter zu entdecken – in deinem Tempo."
+}
+
+
 function getFormats(step3, step2_1, step2_2, step2_3, step6, step1) {
   const formats = []
 
@@ -224,19 +241,16 @@ export default function InteraktiverFormatFinder() {
         <div className="ff-card">
           <h2 className="ff-heading">Dein Weg könnte hier weitergehen:</h2>
           <div className="ff-content">
-            {getFormats(
-              answers.step3,
-              answers.step2_1,
-              answers.step2_2,
-              answers.step2_3,
-              answers.step6,
-              answers.step1
-            ).map((f, i) => (
-              <p key={i} className="ff-link">👉 <a href={formatLinks[f]} target="_blank" rel="noopener noreferrer">{f}</a></p>
+            {getFormats(answers.step3, answers.step2_1, answers.step2_2, answers.step2_3, answers.step6, answers.step1).map((f, i) => (
+              <div key={i} className="ff-result">
+                <p className="ff-link">👉 <a href={formatLinks[f]} target="_blank" rel="noopener noreferrer">{f}</a></p>
+                <p className="ff-description">{formatDescriptions[f]}</p>
+              </div>
             ))}
           </div>
         </div>
       )}
+
     </div>
   )
 }
