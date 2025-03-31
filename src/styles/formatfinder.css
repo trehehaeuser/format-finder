@@ -1,0 +1,29 @@
+.ff-wrapper {
+  max-width: 48rem;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 1.5rem;
+  color: #394657;
+  font-family: sans-serif;
+}
+
+.ff-button {
+  background-color: #6da93c;
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 0.75rem;
+  font-weight: 500;
+  margin-top: 1rem;
+  cursor: pointer;
+}
+
+.ff-button:hover {
+  background-color: #5c9432;
+}
+
+.ff-heading {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #2e7cd8;
+  margin-bottom: 1rem;
+}
