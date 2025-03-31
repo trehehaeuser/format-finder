@@ -50,7 +50,7 @@ const data = {
 const formatLinks = {
   "Sokratische Schreibwerkstatt": "https://www.institut-neue-sokratische-dialoge.de/sokratische-schreibwerkstatt",
   "Sokratisches Mentoring": "https://www.institut-neue-sokratische-dialoge.de/sokratisches-mentoring",
-  "Ich bin | Tagesretreat": "https://www.institut-neue-sokratische-dialoge.de/retreat",
+  "Ich bin – Tagesretreat": "https://www.institut-neue-sokratische-dialoge.de/retreat",
   "Sokratisches Gespräch Online": "https://www.institut-neue-sokratische-dialoge.de/sokratisches-gespraech-online",
   "Sokratischer Konvent": "https://www.institut-neue-sokratische-dialoge.de/konvent",
   "Entdeckungspfad: mehrere Formate zur Auswahl": "https://www.institut-neue-sokratische-dialoge.de/formate",
@@ -66,7 +66,7 @@ const formatLinks = {
 const formatDescriptions = {
   "Sokratische Schreibwerkstatt": "Dein innerer Kompass in Worten – Klarheit im Schreiben, ohne äußeren Druck.",
   "Sokratisches Mentoring": "Individuelles Denk- und Gesprächsformat für echte Klarheit in komplexen Fragen.",
-  "Ich bin | Tagesretreat": "Ein Raum zum Rückzug, Spüren und Wandeln – mit Bewegung, Dialog und Natur.",
+  "Ich bin – Tagesretreat": "Ein Raum zum Rückzug, Spüren und Wandeln – mit Bewegung, Dialog und Natur.",
   "Sokratisches Gespräch Online": "Gemeinsames Denken auf Augenhöhe – online, strukturiert und tiefgehend.",
   "Sokratischer Konvent": "In Resonanz mit anderen – Raum für Präsenz, Austausch und das Wesentliche.",
   "Sokratischer Männerkreis Online": "Für Männer, die sich zeigen wollen – ehrlich, verletzlich, kraftvoll.",
