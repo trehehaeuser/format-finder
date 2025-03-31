@@ -2,7 +2,6 @@ import { useState, useEffect } from 'react'
 import './styles/formatfinder.css'
 import './styles/fonts.css'
 
-
 const data = {
   step1: [
     "Ich habe eine Frage, die mich nicht loslässt.",
@@ -79,36 +78,25 @@ const formatDescriptions = {
   "Entdeckungspfad: mehrere Formate zur Auswahl": "Du bist eingeladen, weiter zu entdecken – in deinem Tempo."
 }
 
-
 function getFormats(step3 = "", step2_1 = "", step2_2 = "", step2_3 = "", step6 = "", step1 = []) {
-  const formats = []
+  const formats = new Set()
 
-  if (step3.includes("schreibend")) formats.push("Sokratische Schreibwerkstatt")
-  if (step3.includes("Gespräch")) formats.push("Sokratisches Mentoring")
-  if (step3.includes("Rückzug")) formats.push("Ich bin – Tagesretreat")
-  if (step3.includes("anderen denken")) formats.push("Sokratisches Gespräch Online")
-  if (step3.includes("schriftlich in Kontakt")) formats.push("Sokratischer Konvent")
-  if (step3.includes("unsicher")) formats.push("Entdeckungspfad: mehrere Formate zur Auswahl")
+  if (step3.includes("schreibend")) formats.add("Sokratische Schreibwerkstatt")
+  if (step3.includes("Gespräch")) formats.add("Sokratisches Mentoring")
+  if (step3.includes("Rückzug")) formats.add("Ich bin – Tagesretreat")
+  if (step3.includes("anderen denken")) formats.add("Sokratisches Gespräch Online")
+  if (step3.includes("schriftlich in Kontakt")) formats.add("Sokratischer Konvent")
+  if (step3.includes("unsicher")) formats.add("Entdeckungspfad: mehrere Formate zur Auswahl")
 
-  if (step6.includes("Mann") && step2_1 === "Resonanz" && step2_3 === "Ich will mich zeigen – ohne Maske") {
-    formats.push("Sokratischer Männerkreis Online")
-  }
-  if (step6.includes("LehrerIn")) formats.push("Sokratischer Lehrerkreis Online")
-  if (step6.includes("Führungsverantwortung") && step2_1 === "Entscheidungskraft") formats.push("Sokratischer Führungskreis Online")
-  if (step2_1 === "Rückzug" && (step2_2 === "Im Übergang – ich will Altes würdigen und Neues finden" || step2_2 === "In der Tiefe – ich will weitergraben")) {
-    formats.push("Dialog- und Qigong-Retreat")
-  }
-  if (step2_1 === "Rückzug" && step2_2 === "Im Übergang – ich will Altes würdigen und Neues finden" && step2_3 === "Ich brauche erst mal Raum für mich") {
-    formats.push("Neuer Sokratischer Dialog im Norden")
-  }
-  if (step2_2 === "In der Tiefe – ich will weitergraben" && step2_3 === "Ich bin bereit für Austausch mit anderen") {
-    formats.push("Neuer Sokratischer Dialog vor Ort")
-  }
-  if (step2_2 === "An einer Schwelle – etwas will sich verändern" && step2_3 === "Ich suche ein Gegenüber, das mit mir denkt") {
-    formats.push("Neuer Sokratischer Dialog als Teil deiner Veranstaltung")
-  }
-  if (step6.includes("Coach") && step3.includes("mit mir denkt")) formats.push("Sokratisches Mentoring")
-  if (step6.includes("Coach") && step2_3 === "Ich will mich zeigen – ohne Maske") formats.push("Sokratischer Konvent")
+  if (step6.includes("Mann") && step2_1 === "Resonanz" && step2_3 === "Ich will mich zeigen – ohne Maske") formats.add("Sokratischer Männerkreis Online")
+  if (step6.includes("LehrerIn")) formats.add("Sokratischer Lehrerkreis Online")
+  if (step6.includes("Führungsverantwortung") && step2_1 === "Entscheidungskraft") formats.add("Sokratischer Führungskreis Online")
+  if (step2_1 === "Rückzug" && ["Im Übergang – ich will Altes würdigen und Neues finden", "In der Tiefe – ich will weitergraben"].includes(step2_2)) formats.add("Dialog- und Qigong-Retreat")
+  if (step2_1 === "Rückzug" && step2_2 === "Im Übergang – ich will Altes würdigen und Neues finden" && step2_3 === "Ich brauche erst mal Raum für mich") formats.add("Neuer Sokratischer Dialog im Norden")
+  if (step2_2 === "In der Tiefe – ich will weitergraben" && step2_3 === "Ich bin bereit für Austausch mit anderen") formats.add("Neuer Sokratischer Dialog vor Ort")
+  if (step2_2 === "An einer Schwelle – etwas will sich verändern" && step2_3 === "Ich suche ein Gegenüber, das mit mir denkt") formats.add("Neuer Sokratischer Dialog als Teil deiner Veranstaltung")
+  if (step6.includes("Coach") && step3.includes("mit mir denkt")) formats.add("Sokratisches Mentoring")
+  if (step6.includes("Coach") && step2_3 === "Ich will mich zeigen – ohne Maske") formats.add("Sokratischer Konvent")
 
   const step1Boost = {
     "Ich stecke fest": "Sokratisches Mentoring",
@@ -119,34 +107,34 @@ function getFormats(step3 = "", step2_1 = "", step2_2 = "", step2_3 = "", step6 
     "Ich fühle mich leer": "Ich bin – Tagesretreat"
   }
 
-const boost = Object.entries(step1Boost)
-  .filter(([key]) => step1.some(s => s.includes(key)))
-  .map(([, value]) => value)
+  const boost = [...new Set(
+    Object.entries(step1Boost)
+      .filter(([key]) => step1?.some?.(s => s.includes(key)))
+      .map(([, value]) => value)
+  )]
 
-const formatPriority = [
-  ...boost,
-  "Sokratisches Mentoring",
-  "Sokratisches Gespräch Online",
-  "Sokratische Schreibwerkstatt",
-  "Sokratischer Führungskreis Online",
-  "Sokratischer Männerkreis Online",
-  "Sokratischer Lehrerkreis Online",
-  "Dialog- und Qigong-Retreat",
-  "Neuer Sokratischer Dialog im Norden",
-  "Neuer Sokratischer Dialog vor Ort",
-  "Neuer Sokratischer Dialog als Teil deiner Veranstaltung",
-  "Sokratischer Konvent",
-  "Entdeckungspfad: mehrere Formate zur Auswahl"
-]
+  const formatPriority = [
+    ...boost,
+    "Sokratisches Mentoring",
+    "Sokratisches Gespräch Online",
+    "Sokratische Schreibwerkstatt",
+    "Sokratischer Führungskreis Online",
+    "Sokratischer Männerkreis Online",
+    "Sokratischer Lehrerkreis Online",
+    "Dialog- und Qigong-Retreat",
+    "Neuer Sokratischer Dialog im Norden",
+    "Neuer Sokratischer Dialog vor Ort",
+    "Neuer Sokratischer Dialog als Teil deiner Veranstaltung",
+    "Sokratischer Konvent",
+    "Entdeckungspfad: mehrere Formate zur Auswahl"
+  ]
 
-const uniqueFormats = [...new Set([...formats, ...boost])]
-if (uniqueFormats.length === 0) return ["Entdeckungspfad: mehrere Formate zur Auswahl"]
-return formatPriority.filter(f => uniqueFormats.includes(f)).slice(0, 2)
+  const uniqueFormats = [...formats]
+  if (uniqueFormats.length === 0) return ["Entdeckungspfad: mehrere Formate zur Auswahl"]
+  return formatPriority.filter(f => uniqueFormats.includes(f)).slice(0, 2)
+}
 
-
-
-
-export default function InteraktiverFormatFinder() {
+function InteraktiverFormatFinder() {
   const [step, setStep] = useState(1)
   const [answers, setAnswers] = useState({})
 
@@ -154,7 +142,6 @@ export default function InteraktiverFormatFinder() {
     setAnswers(prev => ({ ...prev, [stepKey]: value }))
     setStep(step + 1)
 
-    // Google Analytics Tracking – Schritt-Event
     if (typeof gtag !== 'undefined') {
       gtag('event', 'formatfinder_step', {
         event_category: 'FormatFinder',
@@ -175,7 +162,6 @@ export default function InteraktiverFormatFinder() {
         answers.step1
       )
 
-      // Google Analytics Tracking – Ergebnis-Event
       if (typeof gtag !== 'undefined') {
         resultFormats.forEach(format => {
           gtag('event', 'formatfinder_result', {
@@ -243,7 +229,14 @@ export default function InteraktiverFormatFinder() {
         <div className="ff-card">
           <h2 className="ff-heading">Dein Weg könnte hier weitergehen:</h2>
           <div className="ff-content">
-            {getFormats(answers.step3, answers.step2_1, answers.step2_2, answers.step2_3, answers.step6, answers.step1).map((f, i) => (
+            {getFormats(
+              answers.step3,
+              answers.step2_1,
+              answers.step2_2,
+              answers.step2_3,
+              answers.step6,
+              answers.step1
+            ).map((f, i) => (
               <div key={i} className="ff-result">
                 <p className="ff-link">👉 <a href={formatLinks[f]} target="_blank" rel="noopener noreferrer">{f}</a></p>
                 <p className="ff-description">{formatDescriptions[f]}</p>
@@ -252,7 +245,8 @@ export default function InteraktiverFormatFinder() {
           </div>
         </div>
       )}
-
     </div>
   )
 }
+
+export default InteraktiverFormatFinder
