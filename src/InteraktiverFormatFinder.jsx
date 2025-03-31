@@ -85,7 +85,7 @@ function getFormats(step3 = "", step2_1 = "", step2_2 = "", step2_3 = "", step6 
 
   if (step3.includes("schreibend")) formats.push("Sokratische Schreibwerkstatt")
   if (step3.includes("Gespräch")) formats.push("Sokratisches Mentoring")
-  if (step3.includes("Rückzug")) formats.push("Ich bin | Tagesretreat")
+  if (step3.includes("Rückzug")) formats.push("Ich bin – Tagesretreat")
   if (step3.includes("anderen denken")) formats.push("Sokratisches Gespräch Online")
   if (step3.includes("schriftlich in Kontakt")) formats.push("Sokratischer Konvent")
   if (step3.includes("unsicher")) formats.push("Entdeckungspfad: mehrere Formate zur Auswahl")
@@ -112,11 +112,11 @@ function getFormats(step3 = "", step2_1 = "", step2_2 = "", step2_3 = "", step6 
 
   const step1Boost = {
     "Ich stecke fest": "Sokratisches Mentoring",
-    "Ich spüre, dass etwas in Bewegung": "Ich bin | Tagesretreat",
+    "Ich spüre, dass etwas in Bewegung": "Ich bin – Tagesretreat",
     "Ich sehne mich nach Verbindung": "Sokratischer Konvent",
     "Ich will nicht mehr funktionieren": "Sokratische Schreibwerkstatt",
     "Ich suche Klarheit": "Sokratisches Mentoring",
-    "Ich fühle mich leer": "Ich bin | Tagesretreat"
+    "Ich fühle mich leer": "Ich bin – Tagesretreat"
   }
 
   const boost = [...new Set(
