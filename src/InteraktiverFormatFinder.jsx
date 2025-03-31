@@ -119,33 +119,30 @@ function getFormats(step3 = "", step2_1 = "", step2_2 = "", step2_3 = "", step6 
     "Ich fühle mich leer": "Ich bin – Tagesretreat"
   }
 
-  const boost = [...new Set(
-  Object.entries(step1Boost)
-    .filter(([key]) => step1 && step1.includes(key))
-    .map(([, value]) => value)
-)]
+const boost = Object.entries(step1Boost)
+  .filter(([key]) => step1.some(s => s.includes(key)))
+  .map(([, value]) => value)
 
+const formatPriority = [
+  ...boost,
+  "Sokratisches Mentoring",
+  "Sokratisches Gespräch Online",
+  "Sokratische Schreibwerkstatt",
+  "Sokratischer Führungskreis Online",
+  "Sokratischer Männerkreis Online",
+  "Sokratischer Lehrerkreis Online",
+  "Dialog- und Qigong-Retreat",
+  "Neuer Sokratischer Dialog im Norden",
+  "Neuer Sokratischer Dialog vor Ort",
+  "Neuer Sokratischer Dialog als Teil deiner Veranstaltung",
+  "Sokratischer Konvent",
+  "Entdeckungspfad: mehrere Formate zur Auswahl"
+]
 
-  const formatPriority = [
-    ...boost,
-    "Sokratisches Mentoring",
-    "Sokratisches Gespräch Online",
-    "Sokratische Schreibwerkstatt",
-    "Sokratischer Führungskreis Online",
-    "Sokratischer Männerkreis Online",
-    "Sokratischer Lehrerkreis Online",
-    "Dialog- und Qigong-Retreat",
-    "Neuer Sokratischer Dialog im Norden",
-    "Neuer Sokratischer Dialog vor Ort",
-    "Neuer Sokratischer Dialog als Teil deiner Veranstaltung",
-    "Sokratischer Konvent",
-    "Entdeckungspfad: mehrere Formate zur Auswahl"
-  ]
+const uniqueFormats = [...new Set([...formats, ...boost])]
+if (uniqueFormats.length === 0) return ["Entdeckungspfad: mehrere Formate zur Auswahl"]
+return formatPriority.filter(f => uniqueFormats.includes(f)).slice(0, 2)
 
-  const uniqueFormats = [...new Set(formats)]
-  if (uniqueFormats.length === 0) return ["Entdeckungspfad: mehrere Formate zur Auswahl"]
-  return formatPriority.filter(f => uniqueFormats.includes(f)).slice(0, 2)
-}
 
 
 
