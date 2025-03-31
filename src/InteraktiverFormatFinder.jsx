@@ -47,14 +47,79 @@ const formatLinks = {
   "Entdeckungspfad: mehrere Formate zur Auswahl": "https://www.institut-neue-sokratische-dialoge.de/formate"
 }
 
-function getFormats(step3) {
+
+function getFormats(step3, step2_1, step2_2, step2_3) {
   const formats = []
+
+  // Klassische Formate
   if (step3.includes("schreibend")) formats.push("Sokratische Schreibwerkstatt")
   if (step3.includes("Gespräch")) formats.push("Sokratisches Mentoring")
   if (step3.includes("Rückzug")) formats.push("Retreat (Ich bin / Qigong)")
   if (step3.includes("anderen denken")) formats.push("Sokratisches Gespräch Online")
   if (step3.includes("schriftlich in Kontakt")) formats.push("Sokratischer Konvent")
   if (step3.includes("unsicher")) formats.push("Entdeckungspfad: mehrere Formate zur Auswahl")
+
+  // Erweiterte Formate nach Logik
+
+  // Männerkreis – Maskenlos & Resonanz
+  if (
+    step2_3 === "Ich will mich zeigen – ohne Maske" &&
+    step2_1 === "Resonanz"
+  ) {
+    formats.push("Sokratischer Männerkreis Online")
+  }
+
+  // Lehrerkreis – Orientierung an der Schwelle
+  if (
+    step2_2 === "An einer Schwelle – etwas will sich verändern" &&
+    step2_1 === "Orientierung"
+  ) {
+    formats.push("Sokratischer Lehrerkreis Online")
+  }
+
+  // Führungskreis – Entscheidung & Denkräume
+  if (
+    step2_1 === "Entscheidungskraft" &&
+    step2_3 === "Ich suche ein Gegenüber, das mit mir denkt"
+  ) {
+    formats.push("Sokratischer Führungskreis Online")
+  }
+
+  // Qigong-Retreat – Rückzug & Übergang oder Tiefe
+  if (
+    step2_1 === "Rückzug" && (
+      step2_2 === "Im Übergang – ich will Altes würdigen und Neues finden" ||
+      step2_2 === "In der Tiefe – ich will weitergraben"
+    )
+  ) {
+    formats.push("Dialog- und Qigong-Retreat")
+  }
+
+  // Dialog im Norden – Rückzug, Tiefe & Raum
+  if (
+    step2_1 === "Rückzug" &&
+    step2_2 === "Im Übergang – ich will Altes würdigen und Neues finden" &&
+    step2_3 === "Ich brauche erst mal Raum für mich"
+  ) {
+    formats.push("Neuer Sokratischer Dialog im Norden")
+  }
+
+  // Dialog vor Ort – Präsenz + Tiefe
+  if (
+    step2_2 === "In der Tiefe – ich will weitergraben" &&
+    step2_3 === "Ich bin bereit für Austausch mit anderen"
+  ) {
+    formats.push("Neuer Sokratischer Dialog vor Ort")
+  }
+
+  // Dialog als Veranstaltung – Schwelle + Gegenüber
+  if (
+    step2_2 === "An einer Schwelle – etwas will sich verändern" &&
+    step2_3 === "Ich suche ein Gegenüber, das mit mir denkt"
+  ) {
+    formats.push("Neuer Sokratischer Dialog als Teil deiner Veranstaltung")
+  }
+
   return formats
 }
 
