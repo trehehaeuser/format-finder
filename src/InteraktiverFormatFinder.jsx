@@ -190,7 +190,7 @@ export default function InteraktiverFormatFinder() {
       {step === 6 && (
         <div className="ff-card">
           <h2 className="ff-heading">Dein Weg könnte hier weitergehen:</h2>
-          <div className="ff-content">
+          <div className="ff-results">
             {getFormats(answers.step3).map((f, i) => (
               <p key={i} className="ff-link">👉 <a href={formatLinks[f]} target="_blank" rel="noopener noreferrer">{f}</a></p>
             ))}
