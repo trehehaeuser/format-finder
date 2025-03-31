@@ -85,7 +85,7 @@ function getFormats(step3 = "", step2_1 = "", step2_2 = "", step2_3 = "", step6 
 
   if (step3.includes("schreibend")) formats.push("Sokratische Schreibwerkstatt")
   if (step3.includes("Gespräch")) formats.push("Sokratisches Mentoring")
-  if (step3.includes("Rückzug")) formats.push("Retreat (Ich bin / Qigong)")
+  if (step3.includes("Rückzug")) formats.push("Ich bin | Tagesretreat")
   if (step3.includes("anderen denken")) formats.push("Sokratisches Gespräch Online")
   if (step3.includes("schriftlich in Kontakt")) formats.push("Sokratischer Konvent")
   if (step3.includes("unsicher")) formats.push("Entdeckungspfad: mehrere Formate zur Auswahl")
@@ -93,52 +93,30 @@ function getFormats(step3 = "", step2_1 = "", step2_2 = "", step2_3 = "", step6 
   if (step6.includes("Mann") && step2_1 === "Resonanz" && step2_3 === "Ich will mich zeigen – ohne Maske") {
     formats.push("Sokratischer Männerkreis Online")
   }
-
-  if (step6.includes("LehrerIn")) {
-    formats.push("Sokratischer Lehrerkreis Online")
-  }
-
-  if (step6.includes("Führungsverantwortung") && step2_1 === "Entscheidungskraft") {
-    formats.push("Sokratischer Führungskreis Online")
-  }
-
-  if (step2_1 === "Rückzug" &&
-      (step2_2 === "Im Übergang – ich will Altes würdigen und Neues finden" ||
-       step2_2 === "In der Tiefe – ich will weitergraben")) {
+  if (step6.includes("LehrerIn")) formats.push("Sokratischer Lehrerkreis Online")
+  if (step6.includes("Führungsverantwortung") && step2_1 === "Entscheidungskraft") formats.push("Sokratischer Führungskreis Online")
+  if (step2_1 === "Rückzug" && (step2_2 === "Im Übergang – ich will Altes würdigen und Neues finden" || step2_2 === "In der Tiefe – ich will weitergraben")) {
     formats.push("Dialog- und Qigong-Retreat")
   }
-
-  if (step2_1 === "Rückzug" &&
-      step2_2 === "Im Übergang – ich will Altes würdigen und Neues finden" &&
-      step2_3 === "Ich brauche erst mal Raum für mich") {
+  if (step2_1 === "Rückzug" && step2_2 === "Im Übergang – ich will Altes würdigen und Neues finden" && step2_3 === "Ich brauche erst mal Raum für mich") {
     formats.push("Neuer Sokratischer Dialog im Norden")
   }
-
-  if (step2_2 === "In der Tiefe – ich will weitergraben" &&
-      step2_3 === "Ich bin bereit für Austausch mit anderen") {
+  if (step2_2 === "In der Tiefe – ich will weitergraben" && step2_3 === "Ich bin bereit für Austausch mit anderen") {
     formats.push("Neuer Sokratischer Dialog vor Ort")
   }
-
-  if (step2_2 === "An einer Schwelle – etwas will sich verändern" &&
-      step2_3 === "Ich suche ein Gegenüber, das mit mir denkt") {
+  if (step2_2 === "An einer Schwelle – etwas will sich verändern" && step2_3 === "Ich suche ein Gegenüber, das mit mir denkt") {
     formats.push("Neuer Sokratischer Dialog als Teil deiner Veranstaltung")
   }
-
-  if (step6.includes("Coach") && step3.includes("mit mir denkt")) {
-    formats.push("Sokratisches Mentoring")
-  }
-
-  if (step6.includes("Coach") && step2_3 === "Ich will mich zeigen – ohne Maske") {
-    formats.push("Sokratischer Konvent")
-  }
+  if (step6.includes("Coach") && step3.includes("mit mir denkt")) formats.push("Sokratisches Mentoring")
+  if (step6.includes("Coach") && step2_3 === "Ich will mich zeigen – ohne Maske") formats.push("Sokratischer Konvent")
 
   const step1Boost = {
     "Ich stecke fest": "Sokratisches Mentoring",
-    "Ich spüre, dass etwas in Bewegung": "Retreat (Ich bin / Qigong)",
+    "Ich spüre, dass etwas in Bewegung": "Ich bin | Tagesretreat",
     "Ich sehne mich nach Verbindung": "Sokratischer Konvent",
     "Ich will nicht mehr funktionieren": "Sokratische Schreibwerkstatt",
     "Ich suche Klarheit": "Sokratisches Mentoring",
-    "Ich fühle mich leer": "Retreat (Ich bin / Qigong)"
+    "Ich fühle mich leer": "Ich bin | Tagesretreat"
   }
 
   const boost = [...new Set(
@@ -164,13 +142,10 @@ function getFormats(step3 = "", step2_1 = "", step2_2 = "", step2_3 = "", step6 
   ]
 
   const uniqueFormats = [...new Set(formats)]
-
-  if (uniqueFormats.length === 0) {
-    return ["Entdeckungspfad: mehrere Formate zur Auswahl"]
-  }
-
+  if (uniqueFormats.length === 0) return ["Entdeckungspfad: mehrere Formate zur Auswahl"]
   return formatPriority.filter(f => uniqueFormats.includes(f)).slice(0, 2)
 }
+
 
 
 export default function InteraktiverFormatFinder() {
