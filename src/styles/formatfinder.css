@@ -54,3 +54,15 @@
   text-align: center;
 }
 
+.ff-link {
+  text-align: center;        /* zentriert den Link-Text */
+  font-size: 1rem;           /* entspricht ca. 16px */
+  margin: 0.5rem 0;          /* vertikaler Abstand */
+}
+
+.ff-link a {
+  color: #2e7cd8;            /* CI-Blau */
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 1rem;           /* ebenfalls ca. 16px */
+}
