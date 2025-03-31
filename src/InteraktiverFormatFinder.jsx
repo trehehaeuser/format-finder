@@ -43,7 +43,7 @@ const formatLinks = {
   "Sokratisches Mentoring": "https://www.institut-neue-sokratische-dialoge.de/sokratisches-mentoring",
   "Retreat Ich bin": "https://www.institut-neue-sokratische-dialoge.de/ichbin",
   "Sokratisches Gespräch Online": "https://www.institut-neue-sokratische-dialoge.de/sokratisches-gespraech-online",
-  "Sokratischer Konvent": "https://www.institut-neue-sokratische-dialoge.de/konvent",
+  "Sokratischer Konvent": "https://www.institut-neue-sokratische-dialoge.de/neuer-sokratischer-konvent",
   "Entdeckungspfad: mehrere Formate zur Auswahl": "https://www.institut-neue-sokratische-dialoge.de/formate",
 
   // NEU:
