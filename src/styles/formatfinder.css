@@ -36,18 +36,19 @@
   background-color: #1e5ba6; /* dunkler beim Hover */
 }
 
-.ff-content {
-  display: flex;
-  flex-direction: column;
-  align-items: stretch;
-  gap: 1rem; /* Abstand zwischen Buttons */
+/* Zentriert nur die Ergebnisliste (Schritt 6), ohne andere Layouts zu beeinflussen */
+.ff-results {
+  display: flex;              /* nutzt Flexbox für Anordnung */
+  flex-direction: column;     /* ordnet die Links untereinander an */
+  align-items: center;        /* zentriert alle Links horizontal */
+  gap: 1rem;                  /* Abstand zwischen den Ergebnissen */
 }
 
-.ff-link a {
-  color: #2e7cd8;
-  text-decoration: none;
-  font-weight: bold;
+/* Sorgt dafür, dass der Text in den Ergebnissen zentriert steht */
+.ff-link {
+  text-align: center;
 }
+
 
 .ff-heading {
   text-align: center;
