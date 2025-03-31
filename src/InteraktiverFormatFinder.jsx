@@ -119,31 +119,39 @@ function getFormats(step3 = "", step2_1 = "", step2_2 = "", step2_3 = "", step6 
     "Ich fühle mich leer": "Ich bin – Tagesretreat"
   }
 
-const boost = Object.entries(step1Boost)
-  .filter(([key]) => step1.some(s => s.includes(key)))
-  .map(([, value]) => value)
+  // Boost-Formate basierend auf step1 hinzufügen
+  const boostFormats = Object.entries(step1Boost)
+    .filter(([key]) => step1.some(s => s.includes(key)))
+    .map(([, value]) => value)
 
-const formatPriority = [
-  ...boost,
-  "Sokratisches Mentoring",
-  "Sokratisches Gespräch Online",
-  "Sokratische Schreibwerkstatt",
-  "Sokratischer Führungskreis Online",
-  "Sokratischer Männerkreis Online",
-  "Sokratischer Lehrerkreis Online",
-  "Dialog- und Qigong-Retreat",
-  "Neuer Sokratischer Dialog im Norden",
-  "Neuer Sokratischer Dialog vor Ort",
-  "Neuer Sokratischer Dialog als Teil deiner Veranstaltung",
-  "Sokratischer Konvent",
-  "Entdeckungspfad: mehrere Formate zur Auswahl"
-]
+  // Kombiniere alle passenden Formate und entferne Duplikate
+  const uniqueFormats = [...new Set([...formats, ...boostFormats])]
+  
+  // Prioritätsreihenfolge definieren
+  const formatPriority = [
+    "Sokratisches Mentoring",
+    "Sokratisches Gespräch Online",
+    "Sokratische Schreibwerkstatt",
+    "Sokratischer Führungskreis Online",
+    "Sokratischer Männerkreis Online",
+    "Sokratischer Lehrerkreis Online",
+    "Dialog- und Qigong-Retreat",
+    "Neuer Sokratischer Dialog im Norden",
+    "Neuer Sokratischer Dialog vor Ort",
+    "Neuer Sokratischer Dialog als Teil deiner Veranstaltung",
+    "Sokratischer Konvent",
+    "Entdeckungspfad: mehrere Formate zur Auswahl"
+  ]
 
-const uniqueFormats = [...new Set([...formats, ...boost])]
-if (uniqueFormats.length === 0) return ["Entdeckungspfad: mehrere Formate zur Auswahl"]
-return formatPriority.filter(f => uniqueFormats.includes(f)).slice(0, 2)
-
-
+  // Wenn keine Formate gefunden wurden, Standard-Entdeckungspfad zurückgeben
+  if (uniqueFormats.length === 0) return ["Entdeckungspfad: mehrere Formate zur Auswahl"]
+  
+  // Sortiere die gefundenen Formate nach ihrer Priorität und wähle die Top 2
+  const sortedFormats = formatPriority.filter(format => uniqueFormats.includes(format))
+  
+  // Gib die Top 2 Formate zurück
+  return sortedFormats.slice(0, 2)
+}
 
 
 export default function InteraktiverFormatFinder() {
