@@ -120,10 +120,11 @@ function getFormats(step3 = "", step2_1 = "", step2_2 = "", step2_3 = "", step6 
   }
 
   const boost = [...new Set(
-    Object.entries(step1Boost)
-      .filter(([key]) => step1.some(s => s.includes(key)))
-      .map(([, value]) => value)
-  )]
+  Object.entries(step1Boost)
+    .filter(([key]) => step1 && step1.includes(key))
+    .map(([, value]) => value)
+)]
+
 
   const formatPriority = [
     ...boost,
