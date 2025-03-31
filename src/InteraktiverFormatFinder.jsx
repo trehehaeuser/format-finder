@@ -1,5 +1,6 @@
 import { useState } from 'react'
-import '@/styles/formatfinder.css'
+import "./styles/formatfinder.css"
+
 
 const data = {
   step1: [
