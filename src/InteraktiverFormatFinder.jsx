@@ -1,6 +1,5 @@
 import { useState } from 'react'
-import "./styles/formatfinder.css"
-
+import './styles/formatfinder.css'
 
 const data = {
   step1: [
@@ -68,72 +67,60 @@ export default function InteraktiverFormatFinder() {
     setStep(step + 1)
   }
 
+  const renderButtons = (items, stepKey) => (
+    <div className="ff-content">
+      {items.map((item, i) => (
+        <button key={i} onClick={() => handleSelect(stepKey, item)} className="ff-button">{item}</button>
+      ))}
+    </div>
+  )
+
   return (
     <div className="ff-wrapper">
       {step === 1 && (
-        <Card className="ff-card">
-          <CardContent className="ff-content">
-            <h2 className="ff-heading">Was beschäftigt dich gerade?</h2>
-            {data.step1.map((item, i) => (
-              <Button key={i} onClick={() => handleSelect('step1', item)} className="ff-button">{item}</Button>
-            ))}
-          </CardContent>
-        </Card>
+        <div className="ff-card">
+          <h2 className="ff-heading">Was beschäftigt dich gerade?</h2>
+          {renderButtons(data.step1, 'step1')}
+        </div>
       )}
 
       {step === 2 && (
-        <Card className="ff-card">
-          <CardContent className="ff-content">
-            <h2 className="ff-heading">Was brauchst du gerade am meisten?</h2>
-            {data.step2_1.map((item, i) => (
-              <Button key={i} onClick={() => handleSelect('step2_1', item)} className="ff-button">{item}</Button>
-            ))}
-          </CardContent>
-        </Card>
+        <div className="ff-card">
+          <h2 className="ff-heading">Was brauchst du gerade am meisten?</h2>
+          {renderButtons(data.step2_1, 'step2_1')}
+        </div>
       )}
 
       {step === 3 && (
-        <Card className="ff-card">
-          <CardContent className="ff-content">
-            <h2 className="ff-heading">Wo bist du auf deinem Weg?</h2>
-            {data.step2_2.map((item, i) => (
-              <Button key={i} onClick={() => handleSelect('step2_2', item)} className="ff-button">{item}</Button>
-            ))}
-          </CardContent>
-        </Card>
+        <div className="ff-card">
+          <h2 className="ff-heading">Wo bist du auf deinem Weg?</h2>
+          {renderButtons(data.step2_2, 'step2_2')}
+        </div>
       )}
 
       {step === 4 && (
-        <Card className="ff-card">
-          <CardContent className="ff-content">
-            <h2 className="ff-heading">Wie offen bist du für Begegnung mit anderen?</h2>
-            {data.step2_3.map((item, i) => (
-              <Button key={i} onClick={() => handleSelect('step2_3', item)} className="ff-button">{item}</Button>
-            ))}
-          </CardContent>
-        </Card>
+        <div className="ff-card">
+          <h2 className="ff-heading">Wie offen bist du für Begegnung mit anderen?</h2>
+          {renderButtons(data.step2_3, 'step2_3')}
+        </div>
       )}
 
       {step === 5 && (
-        <Card className="ff-card">
-          <CardContent className="ff-content">
-            <h2 className="ff-heading">Wie willst du weitergehen?</h2>
-            {data.step3.map((item, i) => (
-              <Button key={i} onClick={() => handleSelect('step3', item)} className="ff-button">{item}</Button>
-            ))}
-          </CardContent>
-        </Card>
+        <div className="ff-card">
+          <h2 className="ff-heading">Wie willst du weitergehen?</h2>
+          {renderButtons(data.step3, 'step3')}
+        </div>
       )}
 
       {step === 6 && (
-        <Card className="ff-card">
-          <CardContent className="ff-content">
-            <h2 className="ff-heading">Dein Weg könnte hier weitergehen:</h2>
+        <div className="ff-card">
+          <h2 className="ff-heading">Dein Weg könnte hier weitergehen:</h2>
+          <div className="ff-content">
             {getFormats(answers.step3).map((f, i) => (
               <p key={i} className="ff-link">👉 <a href={formatLinks[f]} target="_blank" rel="noopener noreferrer">{f}</a></p>
             ))}
-          </CardContent>
-        </Card>
+          </div>
+        </div>
       )}
     </div>
   )
