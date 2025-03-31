@@ -151,7 +151,8 @@ function getFormats(step3, step2_1, step2_2, step2_3, step6, step1) {
     return ["Entdeckungspfad: mehrere Formate zur Auswahl"]
   }
 
-  return formatPriority.filter(f => uniqueFormats.includes(f)).slice(0, 2)
+  return [...new Set(formatPriority.filter(f => uniqueFormats.includes(f)))].slice(0, 2)
+
 }
 
 export default function InteraktiverFormatFinder() {
