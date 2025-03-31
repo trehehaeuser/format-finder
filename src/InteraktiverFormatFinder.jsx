@@ -123,9 +123,11 @@ function getFormats(step3, step2_1, step2_2, step2_3, step6, step1) {
     "Ich fühle mich leer": "Retreat (Ich bin / Qigong)"
   }
 
-  const boost = Object.entries(step1Boost)
-    .filter(([key]) => step1.includes(key))
-    .map(([, value]) => value)
+  const boost = [...new Set(
+    Object.entries(step1Boost)
+      .filter(([key]) => step1.includes(key))
+      .map(([, value]) => value)
+  )]
 
   const formatPriority = [
     ...boost,
