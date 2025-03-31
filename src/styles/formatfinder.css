@@ -18,7 +18,24 @@
   margin-bottom: 1rem;
 }
 
+
+body {
+  font-family: 'Merriweather', serif;
+  font-size: 1rem;
+  color: #000;
+}
+
+.ff-heading {
+  font-family: 'Merriweather Sans', sans-serif;
+  font-size: 1.6rem;
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
 .ff-button {
+  font-family: 'Merriweather Sans', sans-serif;
+  font-weight: 400;
   display: block;
   width: 100%;
   padding: 1rem 1.5rem;
@@ -46,11 +63,6 @@
 
 /* Sorgt dafür, dass der Text in den Ergebnissen zentriert steht */
 .ff-link {
-  text-align: center;
-}
-
-
-.ff-heading {
   text-align: center;
 }
 
