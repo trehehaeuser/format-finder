@@ -99,4 +99,160 @@ function getFormats(step3 = "", step2_1 = "", step2_2 = "", step2_3 = "", step6 
     formats.push("Dialog- und Qigong-Retreat")
   }
   if (step2_1 === "Rückzug" && step2_2 === "Im Übergang – ich will Altes würdigen und Neues finden" && step2_3 === "Ich brauche erst mal Raum für mich") {
-    formats.push("Neuer Sokratischer D
+    formats.push("Neuer Sokratischer Dialog im Norden")
+  }
+  if (step2_2 === "In der Tiefe – ich will weitergraben" && step2_3 === "Ich bin bereit für Austausch mit anderen") {
+    formats.push("Neuer Sokratischer Dialog vor Ort")
+  }
+  if (step2_2 === "An einer Schwelle – etwas will sich verändern" && step2_3 === "Ich suche ein Gegenüber, das mit mir denkt") {
+    formats.push("Neuer Sokratischer Dialog als Teil deiner Veranstaltung")
+  }
+  if (step6.includes("Coach") && step3.includes("mit mir denkt")) formats.push("Sokratisches Mentoring")
+  if (step6.includes("Coach") && step2_3 === "Ich will mich zeigen – ohne Maske") formats.push("Sokratischer Konvent")
+
+  const step1Boost = {
+    "Ich stecke fest": "Sokratisches Mentoring",
+    "Ich spüre, dass etwas in Bewegung": "Ich bin – Tagesretreat",
+    "Ich sehne mich nach Verbindung": "Sokratischer Konvent",
+    "Ich will nicht mehr funktionieren": "Sokratische Schreibwerkstatt",
+    "Ich suche Klarheit": "Sokratisches Mentoring",
+    "Ich fühle mich leer": "Ich bin – Tagesretreat"
+  }
+
+const boost = Object.entries(step1Boost)
+  .filter(([key]) => step1.some(s => s.includes(key)))
+  .map(([, value]) => value)
+
+const formatPriority = [
+  ...boost,
+  "Sokratisches Mentoring",
+  "Sokratisches Gespräch Online",
+  "Sokratische Schreibwerkstatt",
+  "Sokratischer Führungskreis Online",
+  "Sokratischer Männerkreis Online",
+  "Sokratischer Lehrerkreis Online",
+  "Dialog- und Qigong-Retreat",
+  "Neuer Sokratischer Dialog im Norden",
+  "Neuer Sokratischer Dialog vor Ort",
+  "Neuer Sokratischer Dialog als Teil deiner Veranstaltung",
+  "Sokratischer Konvent",
+  "Entdeckungspfad: mehrere Formate zur Auswahl"
+]
+
+const uniqueFormats = [...new Set([...formats, ...boost])]
+if (uniqueFormats.length === 0) return ["Entdeckungspfad: mehrere Formate zur Auswahl"]
+return formatPriority.filter(f => uniqueFormats.includes(f)).slice(0, 2)
+
+
+
+
+export default function InteraktiverFormatFinder() {
+  const [step, setStep] = useState(1)
+  const [answers, setAnswers] = useState({})
+
+  const handleSelect = (stepKey, value) => {
+    setAnswers(prev => ({ ...prev, [stepKey]: value }))
+    setStep(step + 1)
+
+    // Google Analytics Tracking – Schritt-Event
+    if (typeof gtag !== 'undefined') {
+      gtag('event', 'formatfinder_step', {
+        event_category: 'FormatFinder',
+        event_label: value,
+        value: stepKey
+      })
+    }
+  }
+
+  useEffect(() => {
+    if (step === 6) {
+      const resultFormats = getFormats(
+        answers.step3,
+        answers.step2_1,
+        answers.step2_2,
+        answers.step2_3,
+        answers.step6,
+        answers.step1
+      )
+
+      // Google Analytics Tracking – Ergebnis-Event
+      if (typeof gtag !== 'undefined') {
+        resultFormats.forEach(format => {
+          gtag('event', 'formatfinder_result', {
+            event_category: 'FormatFinder',
+            event_label: format
+          })
+        })
+      }
+    }
+  }, [step])
+
+  const renderButtons = (items, stepKey) => (
+    <div className="ff-content">
+      {items.map((item, i) => (
+        <button key={i} onClick={() => handleSelect(stepKey, item)} className="ff-button">{item}</button>
+      ))}
+    </div>
+  )
+
+  return (
+    <div className="ff-wrapper">
+      {step === 1 && (
+        <div className="ff-card">
+          <h2 className="ff-heading">Was beschäftigt dich gerade?</h2>
+          {renderButtons(data.step1, 'step1')}
+        </div>
+      )}
+
+      {step === 2 && (
+        <div className="ff-card">
+          <h2 className="ff-heading">Was brauchst du gerade am meisten?</h2>
+          {renderButtons(data.step2_1, 'step2_1')}
+        </div>
+      )}
+
+      {step === 3 && (
+        <div className="ff-card">
+          <h2 className="ff-heading">Wo bist du auf deinem Weg?</h2>
+          {renderButtons(data.step2_2, 'step2_2')}
+        </div>
+      )}
+
+      {step === 4 && (
+        <div className="ff-card">
+          <h2 className="ff-heading">Wie offen bist du für Begegnung mit anderen?</h2>
+          {renderButtons(data.step2_3, 'step2_3')}
+        </div>
+      )}
+
+      {step === 5 && (
+        <div className="ff-card">
+          <h2 className="ff-heading">Wie willst du weitergehen?</h2>
+          {renderButtons(data.step3, 'step3')}
+        </div>
+      )}
+
+      {step === 6 && (
+        <div className="ff-card">
+          <h2 className="ff-heading">Damit ich dir die passenden Formate vorschlagen kann, noch eine kleine Abschlussfrage …</h2>
+          {renderButtons(data.step6, 'step6')}
+        </div>
+      )}
+
+      {step === 7 && (
+        <div className="ff-card">
+          <h2 className="ff-heading">Dein Weg könnte hier weitergehen:</h2>
+          <div className="ff-content">
+            {getFormats(answers.step3, answers.step2_1, answers.step2_2, answers.step2_3, answers.step6, answers.step1).map((f, i) => (
+              <div key={i} className="ff-result">
+                <p className="ff-link">👉 <a href={formatLinks[f]} target="_blank" rel="noopener noreferrer">{f}</a></p>
+                <p className="ff-description">{formatDescriptions[f]}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      )}
+
+    </div>
+  )
+}
