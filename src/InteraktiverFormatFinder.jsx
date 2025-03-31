@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import './styles/formatfinder.css'
 
 const data = {
@@ -35,31 +35,30 @@ const data = {
     "Ich will mit anderen denken. Hören, was sie bewegt – und was in mir anklingt.",
     "Ich will schriftlich in Kontakt kommen – nicht allein, aber ohne reden zu müssen.",
     "Ich bin noch unsicher – ich will entdecken."
+  ],
+  step6: [
+    "Ich bin Mann und suche Austausch unter Männern",
+    "Ich bin LehrerIn oder LernbegleiterIn",
+    "Ich habe Führungsverantwortung",
+    "Ich bin Moderator, Trainer, Coach, Mentor oder Berater",
+    "Keines davon"
   ]
 }
-
-const step6Options = [
-  "Ich bin Mann und suche Austausch unter Männern",
-  "Ich bin LehrerIn oder LernbegleiterIn",
-  "Ich habe Führungsverantwortung",
-  "Ich bin Moderator, Trainer, Coach, Mentor oder Berater",
-  "Keines davon"
-]
 
 const formatLinks = {
   "Sokratische Schreibwerkstatt": "https://www.institut-neue-sokratische-dialoge.de/sokratische-schreibwerkstatt",
   "Sokratisches Mentoring": "https://www.institut-neue-sokratische-dialoge.de/sokratisches-mentoring",
-  "Retreat (Ich bin / Qigong)": "https://www.institut-neue-sokratische-dialoge.de/ichbin",
-  "Dialog- und Qigong-Retreat": "https://www.institut-neue-sokratische-dialoge.de/dialog-und-qigong-retreat",
+  "Retreat (Ich bin / Qigong)": "https://www.institut-neue-sokratische-dialoge.de/retreat",
   "Sokratisches Gespräch Online": "https://www.institut-neue-sokratische-dialoge.de/sokratisches-gespraech-online",
-  "Sokratischer Konvent": "https://www.institut-neue-sokratische-dialoge.de/neuer-sokratischer-konvent",
-  "Sokratischer Männerkreis Online": "https://www.institut-neue-sokratische-dialoge.de/sokratischer-maennerkreis-online",
-  "Sokratischer Lehrerkreis Online": "https://www.institut-neue-sokratische-dialoge.de/sokratischer-lehrerkreis-online",
-  "Sokratischer Führungskreis Online": "https://www.institut-neue-sokratische-dialoge.de/sokratischer-fuehrungskreis-online",
-  "Neuer Sokratischer Dialog im Norden": "https://www.institut-neue-sokratische-dialoge.de/neuer-sokratischer-dialog-im-norden",
-  "Neuer Sokratischer Dialog vor Ort": "https://www.institut-neue-sokratische-dialoge.de/kontakt",
-  "Neuer Sokratischer Dialog als Teil deiner Veranstaltung": "https://www.institut-neue-sokratische-dialoge.de/kontakt",
-  "Entdeckungspfad: mehrere Formate zur Auswahl": "https://www.institut-neue-sokratische-dialoge.de/in-resonanz-erleben"
+  "Sokratischer Konvent": "https://www.institut-neue-sokratische-dialoge.de/konvent",
+  "Entdeckungspfad: mehrere Formate zur Auswahl": "https://www.institut-neue-sokratische-dialoge.de/formate",
+  "Sokratischer Männerkreis Online": "https://www.institut-neue-sokratische-dialoge.de/maennerkreis",
+  "Sokratischer Lehrerkreis Online": "https://www.institut-neue-sokratische-dialoge.de/lehrerkreis",
+  "Sokratischer Führungskreis Online": "https://www.institut-neue-sokratische-dialoge.de/fuehrungskreis",
+  "Dialog- und Qigong-Retreat": "https://www.institut-neue-sokratische-dialoge.de/dialog-und-qigong-retreat",
+  "Neuer Sokratischer Dialog im Norden": "https://www.institut-neue-sokratische-dialoge.de/dialog-im-norden",
+  "Neuer Sokratischer Dialog vor Ort": "https://www.institut-neue-sokratische-dialoge.de/dialog-vor-ort",
+  "Neuer Sokratischer Dialog als Teil deiner Veranstaltung": "https://www.institut-neue-sokratische-dialoge.de/dialog-in-veranstaltung"
 }
 
 function getFormats(step3, step2_1, step2_2, step2_3, step6, step1) {
@@ -75,44 +74,22 @@ function getFormats(step3, step2_1, step2_2, step2_3, step6, step1) {
   if (step6.includes("Mann") && step2_1 === "Resonanz" && step2_3 === "Ich will mich zeigen – ohne Maske") {
     formats.push("Sokratischer Männerkreis Online")
   }
-
-  if (step6.includes("LehrerIn")) {
-    formats.push("Sokratischer Lehrerkreis Online")
-  }
-
-  if (step6.includes("Führungsverantwortung") && step2_1 === "Entscheidungskraft") {
-    formats.push("Sokratischer Führungskreis Online")
-  }
-
-  if (step2_1 === "Rückzug" &&
-      (step2_2 === "Im Übergang – ich will Altes würdigen und Neues finden" ||
-       step2_2 === "In der Tiefe – ich will weitergraben")) {
+  if (step6.includes("LehrerIn")) formats.push("Sokratischer Lehrerkreis Online")
+  if (step6.includes("Führungsverantwortung") && step2_1 === "Entscheidungskraft") formats.push("Sokratischer Führungskreis Online")
+  if (step2_1 === "Rückzug" && (step2_2 === "Im Übergang – ich will Altes würdigen und Neues finden" || step2_2 === "In der Tiefe – ich will weitergraben")) {
     formats.push("Dialog- und Qigong-Retreat")
   }
-
-  if (step2_1 === "Rückzug" &&
-      step2_2 === "Im Übergang – ich will Altes würdigen und Neues finden" &&
-      step2_3 === "Ich brauche erst mal Raum für mich") {
+  if (step2_1 === "Rückzug" && step2_2 === "Im Übergang – ich will Altes würdigen und Neues finden" && step2_3 === "Ich brauche erst mal Raum für mich") {
     formats.push("Neuer Sokratischer Dialog im Norden")
   }
-
-  if (step2_2 === "In der Tiefe – ich will weitergraben" &&
-      step2_3 === "Ich bin bereit für Austausch mit anderen") {
+  if (step2_2 === "In der Tiefe – ich will weitergraben" && step2_3 === "Ich bin bereit für Austausch mit anderen") {
     formats.push("Neuer Sokratischer Dialog vor Ort")
   }
-
-  if (step2_2 === "An einer Schwelle – etwas will sich verändern" &&
-      step2_3 === "Ich suche ein Gegenüber, das mit mir denkt") {
+  if (step2_2 === "An einer Schwelle – etwas will sich verändern" && step2_3 === "Ich suche ein Gegenüber, das mit mir denkt") {
     formats.push("Neuer Sokratischer Dialog als Teil deiner Veranstaltung")
   }
-
-  if (step6.includes("Coach") && step3.includes("mit mir denkt")) {
-    formats.push("Sokratisches Mentoring")
-  }
-
-  if (step6.includes("Coach") && step2_3 === "Ich will mich zeigen – ohne Maske") {
-    formats.push("Sokratischer Konvent")
-  }
+  if (step6.includes("Coach") && step3.includes("mit mir denkt")) formats.push("Sokratisches Mentoring")
+  if (step6.includes("Coach") && step2_3 === "Ich will mich zeigen – ohne Maske") formats.push("Sokratischer Konvent")
 
   const step1Boost = {
     "Ich stecke fest": "Sokratisches Mentoring",
@@ -146,13 +123,8 @@ function getFormats(step3, step2_1, step2_2, step2_3, step6, step1) {
   ]
 
   const uniqueFormats = [...new Set(formats)]
-
-  if (uniqueFormats.length === 0) {
-    return ["Entdeckungspfad: mehrere Formate zur Auswahl"]
-  }
-
-  return [...new Set(formatPriority.filter(f => uniqueFormats.includes(f)))].slice(0, 2)
-
+  if (uniqueFormats.length === 0) return ["Entdeckungspfad: mehrere Formate zur Auswahl"]
+  return formatPriority.filter(f => uniqueFormats.includes(f)).slice(0, 2)
 }
 
 export default function InteraktiverFormatFinder() {
@@ -162,7 +134,39 @@ export default function InteraktiverFormatFinder() {
   const handleSelect = (stepKey, value) => {
     setAnswers(prev => ({ ...prev, [stepKey]: value }))
     setStep(step + 1)
+
+    // Google Analytics Tracking – Schritt-Event
+    if (typeof gtag !== 'undefined') {
+      gtag('event', 'formatfinder_step', {
+        event_category: 'FormatFinder',
+        event_label: value,
+        value: stepKey
+      })
+    }
   }
+
+  useEffect(() => {
+    if (step === 6) {
+      const resultFormats = getFormats(
+        answers.step3,
+        answers.step2_1,
+        answers.step2_2,
+        answers.step2_3,
+        answers.step6,
+        answers.step1
+      )
+
+      // Google Analytics Tracking – Ergebnis-Event
+      if (typeof gtag !== 'undefined') {
+        resultFormats.forEach(format => {
+          gtag('event', 'formatfinder_result', {
+            event_category: 'FormatFinder',
+            event_label: format
+          })
+        })
+      }
+    }
+  }, [step])
 
   const renderButtons = (items, stepKey) => (
     <div className="ff-content">
@@ -212,7 +216,7 @@ export default function InteraktiverFormatFinder() {
       {step === 6 && (
         <div className="ff-card">
           <h2 className="ff-heading">Damit ich dir die passenden Formate vorschlagen kann, noch eine kleine Abschlussfrage …</h2>
-          {renderButtons(step6Options, 'step6')}
+          {renderButtons(data.step6, 'step6')}
         </div>
       )}
 
