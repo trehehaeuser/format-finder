@@ -49,17 +49,17 @@ const step6Options = [
 const formatLinks = {
   "Sokratische Schreibwerkstatt": "https://www.institut-neue-sokratische-dialoge.de/sokratische-schreibwerkstatt",
   "Sokratisches Mentoring": "https://www.institut-neue-sokratische-dialoge.de/sokratisches-mentoring",
-  "Retreat (Ich bin / Qigong)": "https://www.institut-neue-sokratische-dialoge.de/retreat",
-  "Dialog- und Qigong-Retreat": "https://www.institut-neue-sokratische-dialoge.de/qigong-retreat",
+  "Retreat (Ich bin / Qigong)": "https://www.institut-neue-sokratische-dialoge.de/ichbin",
+  "Dialog- und Qigong-Retreat": "https://www.institut-neue-sokratische-dialoge.de/dialog-und-qigong-retreat",
   "Sokratisches Gespräch Online": "https://www.institut-neue-sokratische-dialoge.de/sokratisches-gespraech-online",
-  "Sokratischer Konvent": "https://www.institut-neue-sokratische-dialoge.de/konvent",
-  "Sokratischer Männerkreis Online": "https://www.institut-neue-sokratische-dialoge.de/maennerkreis",
-  "Sokratischer Lehrerkreis Online": "https://www.institut-neue-sokratische-dialoge.de/lehrerkreis",
-  "Sokratischer Führungskreis Online": "https://www.institut-neue-sokratische-dialoge.de/sofo",
-  "Neuer Sokratischer Dialog im Norden": "https://www.institut-neue-sokratische-dialoge.de/dialog-norden",
-  "Neuer Sokratischer Dialog vor Ort": "https://www.institut-neue-sokratische-dialoge.de/dialog-vor-ort",
-  "Neuer Sokratischer Dialog als Teil deiner Veranstaltung": "https://www.institut-neue-sokratische-dialoge.de/dialog-fuer-dein-event",
-  "Entdeckungspfad: mehrere Formate zur Auswahl": "https://www.institut-neue-sokratische-dialoge.de/formate"
+  "Sokratischer Konvent": "https://www.institut-neue-sokratische-dialoge.de/neuer-sokratischer-konvent",
+  "Sokratischer Männerkreis Online": "https://www.institut-neue-sokratische-dialoge.de/sokratischer-maennerkreis-online",
+  "Sokratischer Lehrerkreis Online": "https://www.institut-neue-sokratische-dialoge.de/sokratischer-lehrerkreis-online",
+  "Sokratischer Führungskreis Online": "https://www.institut-neue-sokratische-dialoge.de/sokratischer-fuehrungskreis-online",
+  "Neuer Sokratischer Dialog im Norden": "https://www.institut-neue-sokratische-dialoge.de/neuer-sokratischer-dialog-im-norden",
+  "Neuer Sokratischer Dialog vor Ort": "https://www.institut-neue-sokratische-dialoge.de/kontakt",
+  "Neuer Sokratischer Dialog als Teil deiner Veranstaltung": "https://www.institut-neue-sokratische-dialoge.de/kontakt",
+  "Entdeckungspfad: mehrere Formate zur Auswahl": "https://www.institut-neue-sokratische-dialoge.de/in-resonanz-erleben"
 }
 
 function getFormats(step3, step2_1, step2_2, step2_3, step6, step1) {
