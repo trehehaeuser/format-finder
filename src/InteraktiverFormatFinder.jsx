@@ -48,7 +48,7 @@ const data = {
 const formatLinks = {
   "Sokratische Schreibwerkstatt": "https://www.institut-neue-sokratische-dialoge.de/sokratische-schreibwerkstatt",
   "Sokratisches Mentoring": "https://www.institut-neue-sokratische-dialoge.de/sokratisches-mentoring",
-  "Retreat (Ich bin / Qigong)": "https://www.institut-neue-sokratische-dialoge.de/retreat",
+  "Ich bin | Tagesretreat": "https://www.institut-neue-sokratische-dialoge.de/retreat",
   "Sokratisches Gespräch Online": "https://www.institut-neue-sokratische-dialoge.de/sokratisches-gespraech-online",
   "Sokratischer Konvent": "https://www.institut-neue-sokratische-dialoge.de/konvent",
   "Entdeckungspfad: mehrere Formate zur Auswahl": "https://www.institut-neue-sokratische-dialoge.de/formate",
