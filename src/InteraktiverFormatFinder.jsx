@@ -47,19 +47,19 @@ const data = {
 }
 
 const formatLinks = {
-  "Sokratische Schreibwerkstatt": "https://www.institut-neue-sokratische-dialoge.de/sokratische-schreibwerkstatt",
-  "Sokratisches Mentoring": "https://www.institut-neue-sokratische-dialoge.de/sokratisches-mentoring",
-  "Ich bin – Tagesretreat": "https://www.institut-neue-sokratische-dialoge.de/icbbin",
-  "Sokratisches Gespräch Online": "https://www.institut-neue-sokratische-dialoge.de/sokratisches-gespraech-online",
-  "Sokratischer Konvent": "https://www.institut-neue-sokratische-dialoge.de/neuer-sokratischer-konvent",
-  "Entdeckungspfad: mehrere Formate zur Auswahl": "https://www.institut-neue-sokratische-dialoge.de/formate",
-  "Sokratischer Männerkreis Online": "https://www.institut-neue-sokratische-dialoge.de/sokratischer-maennerkreis-onine",
-  "Sokratischer Lehrerkreis Online": "https://www.institut-neue-sokratische-dialoge.de/sokratischer-lehrerkreis-online",
-  "Sokratischer Führungskreis Online": "https://www.institut-neue-sokratische-dialoge.de/sokratischer-fuehrungskreis-online",
-  "Dialog- und Qigong-Retreat": "https://www.institut-neue-sokratische-dialoge.de/dialog-und-qigong-retreat",
-  "Neuer Sokratischer Dialog im Norden": "https://www.institut-neue-sokratische-dialoge.de/neuer-sokratischer-dialog-im-norden",
-  "Neuer Sokratischer Dialog vor Ort": "https://www.institut-neue-sokratische-dialoge.de/kontakt",
-  "Neuer Sokratischer Dialog als Teil deiner Veranstaltung": "https://www.institut-neue-sokratische-dialoge.de/kontakt"
+  "Sokratische Schreibwerkstatt": "https://www.neuer-sokratischer-dialog.de/sokratische-schreibwerkstatt",
+  "Sokratisches Mentoring": "https://www.neuer-sokratischer-dialog.de/sokratisches-mentoring",
+  "Ich bin – Tagesretreat": "https://www.neuer-sokratischer-dialog.de/icbbin",
+  "Sokratisches Gespräch Online": "https://www.neuer-sokratischer-dialog.de/sokratisches-gespraech-online",
+  "Sokratischer Konvent": "https://www.neuer-sokratischer-dialog.de/neuer-sokratischer-konvent",
+  "Entdeckungspfad: mehrere Formate zur Auswahl": "https://www.neuer-sokratischer-dialog.de/formate",
+  "Sokratischer Männerkreis Online": "https://www.neuer-sokratischer-dialog.de/sokratischer-maennerkreis-onine",
+  "Sokratischer Lehrerkreis Online": "https://www.neuer-sokratischer-dialog.de/sokratischer-lehrerkreis-online",
+  "Sokratischer Führungskreis Online": "https://www.neuer-sokratischer-dialog.de/sokratischer-fuehrungskreis-online",
+  "Dialog- und Qigong-Retreat": "https://www.neuer-sokratischer-dialog.de/dialog-und-qigong-retreat",
+  "Neuer Sokratischer Dialog im Norden": "https://www.neuer-sokratischer-dialog.de/neuer-sokratischer-dialog-im-norden",
+  "Neuer Sokratischer Dialog vor Ort": "https://www.neuer-sokratischer-dialog.de/kontakt",
+  "Neuer Sokratischer Dialog als Teil deiner Veranstaltung": "https://www.neuer-sokratischer-dialog.de/kontakt"
 }
 
 const formatDescriptions = {
