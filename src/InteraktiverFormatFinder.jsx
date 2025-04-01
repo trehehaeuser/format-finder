@@ -52,7 +52,7 @@ const formatLinks = {
   "Ich bin – Tagesretreat": "https://www.neuer-sokratischer-dialog.de/icbbin",
   "Sokratisches Gespräch Online": "https://www.neuer-sokratischer-dialog.de/sokratisches-gespraech-online",
   "Sokratischer Konvent": "https://www.neuer-sokratischer-dialog.de/neuer-sokratischer-konvent",
-  "Entdeckungspfad: mehrere Formate zur Auswahl": "https://www.neuer-sokratischer-dialog.de/formate",
+  "Entdeckungspfad: mehrere Formate zur Auswahl": "https://www.neuer-sokratischer-dialog.de/in-resonanz-erkennen",
   "Sokratischer Männerkreis Online": "https://www.neuer-sokratischer-dialog.de/sokratischer-maennerkreis-onine",
   "Sokratischer Lehrerkreis Online": "https://www.neuer-sokratischer-dialog.de/sokratischer-lehrerkreis-online",
   "Sokratischer Führungskreis Online": "https://www.neuer-sokratischer-dialog.de/sokratischer-fuehrungskreis-online",
